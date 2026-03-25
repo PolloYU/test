@@ -1,3 +1,4 @@
+```markdown
 # Test Plan
 
 ## Unit and Integration tests
@@ -16,9 +17,9 @@ Additionally a small set of additional unit tests and integration tests have bee
 
 ## Additional Test Cases
 
-Route Reliability:
+### Route Reliability
 
-As this is a custom implemented feature, Jhipster provided no test cases for it and all og the tests had to be manually written. These are located in
+As this is a custom implemented feature, Jhipster provided no test cases for it and all of the tests had to be manually written. These are located in
 
 ```
 src/test/java/com/digitaldreamers/busratings/service/RouteReliabilityServiceTest.java
@@ -27,13 +28,13 @@ src/test/java/com/digitaldreamers/busratings/service/RouteReliabilityServiceTest
 | Test Name                                                 | Description                                                                                                                          |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | calculateRRIWithNoReportsReturns100                       | The RRI of a route should be 100 if there are no reports                                                                             |
-| calculateRRIWithNullCategoryShouldSkipReport              | The calculation of RRI shoul skip any reports with a null category and should not break if they are present                          |
-| calculateRRIWithNullSeverityShouldSkipReport              | The calcualtion of RRI should skip any report with a null severity as the calculation is based off of the severity of the reports    |
+| calculateRRIWithNullCategoryShouldSkipReport              | The calculation of RRI should skip any reports with a null category and should not break if they are present                          |
+| calculateRRIWithNullSeverityShouldSkipReport              | The calculation of RRI should skip any report with a null severity as the calculation is based off of the severity of the reports    |
 | calculateRRIShouldNeverReturnLessThan1                    | The RRI should have a lower bound of 1, so the returned result should never be lower                                                 |
 | calculateRRIWithDelayCategoryShouldBeTreatedAsPunctuality | The delay and punctuality categories should both be treated the same when calculating the RRI                                        |
 | calculateRRIWithUnknownCategoryIsUnaffected               | The RRI is based upon the safety, punctuality, and accessability of the route - so any other categories should not influence the RRI |
 
-Report Resource:
+### Report Resource
 
 Because there has been additional functionality implemented for the fetching of reports - in particular the filtering - some additional integration tests were put in place to test this functionality. These are located in:
 
@@ -47,9 +48,32 @@ src/test/java/com/digitaldreamers/busratings/web/rest/ReportResourceIT.java
 | getAllReportsFilteredBySeverityLevel | Makes sure that reports are correctly filtered by their severity level when requested                 |
 | getAllReportsFilteredByDate          | Makes sure that reports are correctly filtered by date when requested.                                |
 
+### Frontend Components
+
+The following frontend tests have been manually written or adapted from JHipster generation to cover key UI functionality. All test files are located under `src/main/webapp/app/` with the `.spec.tsx` suffix.
+
+| Test File                               | Test Object                   | Test Cases                                                                                                                                                                                                                                                                                         | Notes                            |
+| --------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `header.spec.tsx`                       | `Header` component            | - Dev environment shows ribbon<br>- Prod environment hides ribbon<br>- Logged‑in and guest menus differ                                                                                                                                                                                            | Adapted from JHipster generation |
+| `account.spec.tsx`                      | `AccountMenu` component       | - Authenticated user sees logout option<br>- Guest user sees login option                                                                                                                                                                                                                          | Adapted from JHipster generation |
+| `error-boundary.spec.tsx`               | `ErrorBoundary` component     | - Catches errors and displays fallback UI                                                                                                                                                                                                                                                          | Adapted from JHipster generation |
+| `error-boundary-routes.spec.tsx`        | `ErrorBoundaryRoutes`         | - Shows error only on matching route<br>- Unmatched routes do not trigger error boundary                                                                                                                                                                                                           | Adapted from JHipster generation |
+| `private-route.spec.tsx`                | `PrivateRoute` & `hasAnyAuthority` | - Redirects to login when not authenticated<br>- Shows insufficient authority message when lacks required role                                                                                                                                                                                     | Adapted from JHipster generation |
+| `validated-form.spec.tsx`               | `ValidatedForm`, `ValidatedField`, `ValidatedInput`, `ValidatedBlobField` | - Form rendering, default values<br>- Validation rules, error messages<br>- File upload preview, clear functionality                                                                                                                                                                               | Generated by JHipster, adapted   |
+| `translator-context.spec.tsx`           | `TranslatorContext`           | - Register translations, deep merge<br>- Locale switching                                                                                                                                                                                                                                          | Generated by JHipster            |
+| `translate.spec.tsx`                    | `Translate` component, `translate` service | - Translation rendering, interpolation<br>- HTML sanitization, missing key handling                                                                                                                                                                                                                | Generated by JHipster            |
+| `text-format.spec.tsx`                  | `TextFormat` component        | - Date formatting with locales<br>- Number formatting                                                                                                                                                                                                                                              | Generated by JHipster            |
+| `item-count.spec.tsx`                   | `JhiItemCount` component      | - Pagination message<br>- Localisation                                                                                                                                                                                                                                                             | Generated by JHipster            |
+| `account-settings.reducer.spec.ts`      | Redux reducer for account settings | - Update pending/fulfilled/rejected states                                                                                                                                                                                                                                                         | Hand‑written                     |
+| `report-map.spec.tsx`                   | `ReportMap` component         | - Loads reports and displays markers<br>- Filters (category, route) update markers and heatmap data<br>- Heatmap toggle adds/removes layer<br>- Click marker opens detail panel with correct status icon/color and user info<br>- Fullscreen button toggles fullscreen mode<br>- Map resizes on window resize | Hand‑written                     |
+| `accessibility-settings.spec.tsx`       | `AccessibilitySettings`       | - Text size slider changes value<br>- Icon size slider changes value<br>- Colour blind mode dropdown selects option<br>- High contrast switch toggles<br>- Dyslexic font switch toggles<br>- Save button dispatches action and shows success message<br>- Settings persist after page reload | Hand‑written                     |
+| `dashboard-stats.spec.tsx`              | `DashboardStats` (summary cards) | - Fetches statistics from `/api/reports/statistics`<br>- Displays total, pending, resolved, and last‑7‑days counts<br>- Handles API error gracefully (shows 0)                                                                                                                                      | Hand‑written                     |
+| `quick-actions.spec.tsx`                | Quick actions cards (in `home.tsx`) | - Clicking “New Report” navigates to `/report/new`<br>- Clicking “View All Reports” navigates to `/report`<br>- Clicking “Accessibility” navigates to `/accessibility`                                                                                                                              | Hand‑written                     |
+| `report-update.spec.tsx`                | `ReportUpdate` component      | - Submits form successfully, shows success message<br>- Submits form with validation errors, shows error message<br>- Location picker updates latitude/longitude fields<br>- Latitude/longitude input updates marker position                                                                        | Hand‑written                     |
+
 ## Running the Tests
 
-To run the tests, maven and npm can are used.
+To run the tests, maven and npm are used.
 
 Unit tests on the backend:
 
@@ -93,3 +117,5 @@ Frontend unit test:
 Test Suites: 19 passed, 19 total
 Tests:       174 passed, 174 total
 ```
+```
+
