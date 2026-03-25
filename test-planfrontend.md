@@ -26,7 +26,7 @@ Test Suites: 24 passed, 24 total
 Tests:       206 passed, 206 total
 ```
 
-Overall code coverage stood at **90.07% statements**, **68.03% branches**, and **88.07% functions**. The detailed coverage report shows which areas (e.g., custom reducers, utility functions) are well covered and where gaps remain.
+Overall code coverage stood at **88.86% statements**, **60.85% branches**, and **86.54% functions**. The detailed coverage report shows which areas (e.g., custom reducers, utility functions) are well covered and where gaps remain.
 
 ### Frontend Test Cases (Manually Written)
 
