@@ -21,9 +21,7 @@ Additionally a small set of additional unit tests and integration tests have bee
 
 As this is a custom implemented feature, Jhipster provided no test cases for it and all of the tests had to be manually written. These are located in
 
-```
 src/test/java/com/digitaldreamers/busratings/service/RouteReliabilityServiceTest.java
-```
 
 | Test Name                                                 | Description                                                                                                                          |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -38,9 +36,7 @@ src/test/java/com/digitaldreamers/busratings/service/RouteReliabilityServiceTest
 
 Because there has been additional functionality implemented for the fetching of reports - in particular the filtering - some additional integration tests were put in place to test this functionality. These are located in:
 
-```
 src/test/java/com/digitaldreamers/busratings/web/rest/ReportResourceIT.java
-```
 
 | Test Name                            | Description                                                                                           |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------- |
