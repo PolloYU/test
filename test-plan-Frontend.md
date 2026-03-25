@@ -2,7 +2,7 @@
 
 ## Frontend Unit Tests
 
-Our frontend testing approach leverages Jest as the test runner, combined with React Testing Library to validate component behavior and Redux reducers. The tests are primarily focused on critical parts of the application, such as reducers, authentication flows, error handling, and shared UI components.
+Our frontend testing approach leverages Jest as the test runner, combined with React Testing Library to validate component behavior and Redux reducers. The tests are primarily focused on critical parts of the application, such as reducers, authentication flows, and error handling.
 
 ### Running Frontend Tests
 
